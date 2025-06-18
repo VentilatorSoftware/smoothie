@@ -12,7 +12,7 @@ win:
   icon: "src/assets/img/icon.png"
   artifactName: "${name}-setup-win-${arch}-${version}.${ext}"
 mac:
-  target: dmg
+  target: default
   icon: "src/assets/img/icon.icns"
   artifactName: "${name}-setup-mac-${version}.${ext}"
 linux:
@@ -27,3 +27,5 @@ publish:
     owner: VentilatorSoftware
     repo: smoothie
     releaseType: draft
+dmg:
+  background: "src/assets/img/dmg_background.tiff"
