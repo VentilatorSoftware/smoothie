@@ -7,6 +7,11 @@ A light Electron client for Kirka.io. Mostly https://github.com/irrvlo/juice-cli
 - [Releases](https://github.com/VentilatorSoftware/smoothie/releases)
 
 Windows, Linux and MacOS releases are available.
+
+# Support Server
+
+> https://discord.gg/UvqRsR9T4B
+
 # What features does this have?
 
 - Uncapped FPS
