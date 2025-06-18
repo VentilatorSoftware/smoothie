@@ -7,8 +7,8 @@ autoUpdater.autoDownload = true;
 
 autoUpdater.setFeedURL({
   provider: "github",
-  owner: "irrvlo",
-  repo: "smoothie-client",
+  owner: "VentilatorSoftware",
+  repo: "smoothie",
 });
 
 let splashWindow;

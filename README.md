@@ -37,7 +37,6 @@ Windows, Linux and MacOS releases are available.
 - Remote to Static Links
 - Proxy Link Support
 - Menu Keybind Reminder
-- No Pulp (aka smooth)
 
 ## Hotkeys
 | Hotkey | Description |

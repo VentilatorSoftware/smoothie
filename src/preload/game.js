@@ -50,10 +50,10 @@ document.addEventListener("DOMContentLoaded", async () => {
   customReqScripts(settings);
 
   const fetchAll = async () => {
-    const [customizations, user] = await Promise.all([
-      fetch("https://smoothie-api.irrvlo.xyz/api/customizations").then((r) =>
+    const [customizations, user] = await Promise.all([[], /* [
+      fetch("https://juice-api.irrvlo.xyz/api/customizations").then((r) =>
         r.json()
-      ),
+      ), */
       fetch(`https://api.kirka.io/api/user`, {
         headers: {
           Authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -110,9 +110,9 @@ document.addEventListener("DOMContentLoaded", async () => {
     if (!general_news && !promotional_news && !event_news && !alert_news)
       return;
 
-    let news = await fetch("https://smoothie-api.irrvlo.xyz/api/news").then((r) =>
+    let news = []; /* await fetch("https://juice-api.irrvlo.xyz/api/news").then((r) =>
       r.json()
-    );
+    ); */
     if (!news.length) return;
 
     news = news.filter(({ category }) => {
@@ -451,19 +451,19 @@ document.addEventListener("DOMContentLoaded", async () => {
 
         let badgeStyle = "height: 32px; width: auto;";
 
-        if (customs.discord) {
-          const linkedBadge = document.createElement("img");
-          linkedBadge.src = "https://smoothie.irrvlo.xyz/linked.png";
-          linkedBadge.style = badgeStyle;
-          badgesElem.appendChild(linkedBadge);
-        }
+        // if (customs.discord) {
+        //   const linkedBadge = document.createElement("img");
+        //   linkedBadge.src = "https://juice.irrvlo.xyz/linked.png";
+        //   linkedBadge.style = badgeStyle;
+        //   badgesElem.appendChild(linkedBadge);
+        // }
 
-        if (customs.booster) {
-          const boosterBadge = document.createElement("img");
-          boosterBadge.src = "https://smoothie.irrvlo.xyz/booster.png";
-          boosterBadge.style = badgeStyle;
-          badgesElem.appendChild(boosterBadge);
-        }
+        // if (customs.booster) {
+        //   const boosterBadge = document.createElement("img");
+        //   boosterBadge.src = "https://juice.irrvlo.xyz/booster.png";
+        //   boosterBadge.style = badgeStyle;
+        //   badgesElem.appendChild(boosterBadge);
+        // }
 
         if (customs.badges && customs.badges.length) {
           customs.badges.forEach((badge) => {
@@ -643,19 +643,19 @@ document.addEventListener("DOMContentLoaded", async () => {
             `;
             }
 
-            if (customs.discord) {
-              const linkedBadge = document.createElement("img");
-              linkedBadge.src = "https://smoothie.irrvlo.xyz/linked.png";
-              linkedBadge.style = badgeStyle;
-              badgesElem.appendChild(linkedBadge);
-            }
+            // if (customs.discord) {
+            //   const linkedBadge = document.createElement("img");
+            //   linkedBadge.src = "https://juice.irrvlo.xyz/linked.png";
+            //   linkedBadge.style = badgeStyle;
+            //   badgesElem.appendChild(linkedBadge);
+            // }
 
-            if (customs.booster) {
-              const boosterBadge = document.createElement("img");
-              boosterBadge.src = "https://smoothie.irrvlo.xyz/booster.png";
-              boosterBadge.style = badgeStyle;
-              badgesElem.appendChild(boosterBadge);
-            }
+            // if (customs.booster) {
+            //   const boosterBadge = document.createElement("img");
+            //   boosterBadge.src = "https://juice.irrvlo.xyz/booster.png";
+            //   boosterBadge.style = badgeStyle;
+            //   badgesElem.appendChild(boosterBadge);
+            // }
 
             if (customs.badges && customs.badges.length) {
               customs.badges.forEach((badge) => {
@@ -682,8 +682,7 @@ document.addEventListener("DOMContentLoaded", async () => {
             gap: 0.5rem;
           `;
           div.innerHTML = `
-          <img src="https://smoothie.irrvlo.xyz/bubbles.png" style="height: 0.8rem; width: auto;" />
-          <span style="font-size: 1rem; font-weight: 600; color: #fff;">Smoothie Client Developer</span>
+          <span style="font-size: 1rem; font-weight: 600; color: #fff;">Juice Client Developer</span>
           `;
           profile.appendChild(div);
         }
@@ -798,8 +797,8 @@ document.addEventListener("DOMContentLoaded", async () => {
               }
             };
 
-            if (customs.discord) addBadge("https://smoothie.irrvlo.xyz/linked.png");
-            if (customs.booster) addBadge("https://smoothie.irrvlo.xyz/booster.png");
+            // if (customs.discord) addBadge("https://juice.irrvlo.xyz/linked.png");
+            // if (customs.booster) addBadge("https://juice.irrvlo.xyz/booster.png");
 
             if (customs.badges?.length) {
               customs.badges.forEach((badge) => addBadge(badge));
@@ -1020,19 +1019,19 @@ document.addEventListener("DOMContentLoaded", async () => {
 
             const badgeStyle = "height: 18px; width: auto;";
 
-            if (customs.discord) {
-              const linkedBadge = document.createElement("img");
-              linkedBadge.src = "https://smoothie.irrvlo.xyz/linked.png";
-              linkedBadge.style.cssText = badgeStyle;
-              badgesElem.appendChild(linkedBadge);
-            }
+            // if (customs.discord) {
+            //   const linkedBadge = document.createElement("img");
+            //   linkedBadge.src = "https://juice.irrvlo.xyz/linked.png";
+            //   linkedBadge.style.cssText = badgeStyle;
+            //   badgesElem.appendChild(linkedBadge);
+            // }
 
-            if (customs.booster) {
-              const boosterBadge = document.createElement("img");
-              boosterBadge.src = "https://smoothie.irrvlo.xyz/booster.png";
-              boosterBadge.style.cssText = badgeStyle;
-              badgesElem.appendChild(boosterBadge);
-            }
+            // if (customs.booster) {
+            //   const boosterBadge = document.createElement("img");
+            //   boosterBadge.src = "https://juice.irrvlo.xyz/booster.png";
+            //   boosterBadge.style.cssText = badgeStyle;
+            //   badgesElem.appendChild(boosterBadge);
+            // }
 
             if (customs.badges && customs.badges.length)
               customs.badges.forEach((badge) => {
