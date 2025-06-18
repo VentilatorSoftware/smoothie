@@ -1,5 +1,5 @@
 {
-  "name": "juice-client",
+  "name": "smoothie-client",
   "version": "1.1.18",
   "description": "Electron client for Kirka.io",
   "main": "src/main.js",
@@ -9,10 +9,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/irrvlo/juice-client.git"
+    "url": "https://github.com/VentilatorSoftware/smoothie.git"
   },
   "keywords": [],
-  "author": "irrvlo",
+  "author": "irrvlo as of the present",
   "license": "ISC",
   "devDependencies": {
     "electron": "^10.4.7",

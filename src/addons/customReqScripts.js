@@ -135,7 +135,7 @@ const customReqScripts = (settings) => {
   }
 
   const inputElem = Object.assign(document.createElement("input"), {
-    id: "juice-custom-listing",
+    id: "smoothie-custom-listing",
     type: "number",
     min: "0",
     placeholder: "Custom amount",
@@ -163,7 +163,7 @@ const customReqScripts = (settings) => {
   const observer = new MutationObserver(() => {
     if (window.location.href === `${base_url}inventory` && custom_list_price) {
       const sellElem = document.querySelector(".cont-sell");
-      if (sellElem && !document.getElementById("juice-custom-listing") && sellElem.parentElement.parentElement.id !== "sell-item-modal") {
+      if (sellElem && !document.getElementById("smoothie-custom-listing") && sellElem.parentElement.parentElement.id !== "sell-item-modal") {
         sellElem.children[1].after(inputElem);
       }
     }

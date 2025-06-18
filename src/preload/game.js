@@ -51,7 +51,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   const fetchAll = async () => {
     const [customizations, user] = await Promise.all([
-      fetch("https://juice-api.irrvlo.xyz/api/customizations").then((r) =>
+      fetch("https://smoothie-api.irrvlo.xyz/api/customizations").then((r) =>
         r.json()
       ),
       fetch(`https://api.kirka.io/api/user`, {
@@ -62,7 +62,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     ]);
 
     localStorage.setItem(
-      "juice-customizations",
+      "smoothie-customizations",
       JSON.stringify(customizations)
     );
     localStorage.setItem(
@@ -76,22 +76,22 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   const lobbyKeybindReminder = (settings) => {
     const keybindReminder = document.createElement("span");
-    keybindReminder.id = "juice-keybind-reminder";
+    keybindReminder.id = "smoothie-keybind-reminder";
     keybindReminder.style = `position: absolute; left: 147px; bottom: 10px; font-size: 0.9rem; color: #fff; width: max-content`;
 
     keybindReminder.innerText = `Press ${settings.menu_keybind} to open the client menu.`;
 
     if (
       !document.querySelector("#app > .interface") ||
-      document.querySelector("#juice-keybind-reminder")
+      document.querySelector("#smoothie-keybind-reminder")
     )
       return;
 
     document.querySelector("#app #left-icons").appendChild(keybindReminder);
-    document.addEventListener("juice-settings-changed", ({ detail }) => {
+    document.addEventListener("smoothie-settings-changed", ({ detail }) => {
       if (detail.setting === "menu_keybind") {
         const keybindReminder = document.querySelector(
-          "#juice-keybind-reminder"
+          "#smoothie-keybind-reminder"
         );
         if (keybindReminder)
           keybindReminder.innerText = `Press ${detail.value} to open the client menu.`;
@@ -110,7 +110,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     if (!general_news && !promotional_news && !event_news && !alert_news)
       return;
 
-    let news = await fetch("https://juice-api.irrvlo.xyz/api/news").then((r) =>
+    let news = await fetch("https://smoothie-api.irrvlo.xyz/api/news").then((r) =>
       r.json()
     );
     if (!news.length) return;
@@ -251,14 +251,14 @@ document.addEventListener("DOMContentLoaded", async () => {
     news.forEach((newsItem) => createNewsCard(newsItem));
   };
 
-  const juiceDiscordButton = () => {
+  const smoothieDiscordButton = () => {
     const btn = document.querySelectorAll(".card-cont.soc-group")[1];
-    if (!btn || document.querySelector("#juice-discord-btn")) return;
+    if (!btn || document.querySelector("#smoothie-discord-btn")) return;
 
     const discordBtn = btn.cloneNode(true);
     discordBtn.className =
       "card-cont soc-group transfer-list-top-enter transfer-list-top-enter-active";
-    discordBtn.id = "juice-discord-btn";
+    discordBtn.id = "smoothie-discord-btn";
     discordBtn.style = `
     background: linear-gradient(to top, rgba(255,147,45,.75), rgba(172,250,112,.75)) !important;
     border-bottom-color: #c47022 !important;
@@ -289,11 +289,11 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   const loadTheme = () => {
     const addedStyles = document.createElement("style");
-    addedStyles.id = "juice-styles-theme";
+    addedStyles.id = "smoothie-styles-theme";
     document.head.appendChild(addedStyles);
 
     const customStyles = document.createElement("style");
-    customStyles.id = "juice-styles-custom";
+    customStyles.id = "smoothie-styles-custom";
     document.head.appendChild(customStyles);
 
     const updateTheme = () => {
@@ -310,7 +310,7 @@ document.addEventListener("DOMContentLoaded", async () => {
       customStyles.innerHTML = advancedCSS;
     };
 
-    document.addEventListener("juice-settings-changed", (e) => {
+    document.addEventListener("smoothie-settings-changed", (e) => {
       if (
         e.detail.setting === "css_link" ||
         e.detail.setting === "css_enabled" ||
@@ -325,7 +325,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   const applyUIFeatures = () => {
     const addedStyles = document.createElement("style");
-    addedStyles.id = "juice-styles-ui-features";
+    addedStyles.id = "smoothie-styles-ui-features";
     document.head.appendChild(addedStyles);
 
     const updateUIFeatures = () => {
@@ -382,12 +382,12 @@ document.addEventListener("DOMContentLoaded", async () => {
           "canvas { animation: rotateHue 1s linear infinite !important; }"
         );
       if (!settings.lobby_keybind_reminder)
-        styles.push("#juice-keybind-reminder { display: none; }");
+        styles.push("#smoothie-keybind-reminder { display: none; }");
 
       addedStyles.innerHTML = styles.join("");
     };
 
-    document.addEventListener("juice-settings-changed", (e) => {
+    document.addEventListener("smoothie-settings-changed", (e) => {
       const relevantSettings = [
         "perm_crosshair",
         "hide_chat",
@@ -410,10 +410,10 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     lobbyKeybindReminder(settings);
     lobbyNews(settings);
-    juiceDiscordButton();
+    smoothieDiscordButton();
 
     const customizations = JSON.parse(
-      localStorage.getItem("juice-customizations")
+      localStorage.getItem("smoothie-customizations")
     );
     const currentUser = JSON.parse(localStorage.getItem("current-user"));
 
@@ -440,12 +440,12 @@ document.addEventListener("DOMContentLoaded", async () => {
           lobbyNickname.style =
             "display: flex; align-items: flex-end; gap: 0.25rem; overflow: unset !important;";
 
-        if (lobbyNickname.querySelector(".juice-badges")) return;
+        if (lobbyNickname.querySelector(".smoothie-badges")) return;
 
         const badgesElem = document.createElement("div");
         badgesElem.style =
           "display: flex; gap: 0.25rem; align-items: center; width: 0;";
-        badgesElem.className = "juice-badges";
+        badgesElem.className = "smoothie-badges";
 
         lobbyNickname.appendChild(badgesElem);
 
@@ -453,14 +453,14 @@ document.addEventListener("DOMContentLoaded", async () => {
 
         if (customs.discord) {
           const linkedBadge = document.createElement("img");
-          linkedBadge.src = "https://juice.irrvlo.xyz/linked.png";
+          linkedBadge.src = "https://smoothie.irrvlo.xyz/linked.png";
           linkedBadge.style = badgeStyle;
           badgesElem.appendChild(linkedBadge);
         }
 
         if (customs.booster) {
           const boosterBadge = document.createElement("img");
-          boosterBadge.src = "https://juice.irrvlo.xyz/booster.png";
+          boosterBadge.src = "https://smoothie.irrvlo.xyz/booster.png";
           boosterBadge.style = badgeStyle;
           badgesElem.appendChild(boosterBadge);
         }
@@ -482,12 +482,12 @@ document.addEventListener("DOMContentLoaded", async () => {
       );
       lobbyNickname.style =
         "display: flex; align-items: flex-end; gap: 0.25rem;";
-      lobbyNickname.querySelector(".juice-badges")?.remove();
+      lobbyNickname.querySelector(".smoothie-badges")?.remove();
     };
 
     if (settings.customizations) applyCustomizations();
 
-    document.addEventListener("juice-settings-changed", ({ detail }) => {
+    document.addEventListener("smoothie-settings-changed", ({ detail }) => {
       if (detail.setting === "customizations")
         detail.value ? applyCustomizations() : removeCustomizations();
     });
@@ -620,11 +620,11 @@ document.addEventListener("DOMContentLoaded", async () => {
           const badgesElem = document.createElement("div");
           badgesElem.style =
             "display: flex; gap: 0.25rem; align-items: center;";
-          badgesElem.className = "juice-badges";
+          badgesElem.className = "smoothie-badges";
           nickname.appendChild(badgesElem);
 
           const customizations = JSON.parse(
-            localStorage.getItem("juice-customizations")
+            localStorage.getItem("smoothie-customizations")
           );
 
           if (customizations?.find((c) => c.shortId === shortId)) {
@@ -645,14 +645,14 @@ document.addEventListener("DOMContentLoaded", async () => {
 
             if (customs.discord) {
               const linkedBadge = document.createElement("img");
-              linkedBadge.src = "https://juice.irrvlo.xyz/linked.png";
+              linkedBadge.src = "https://smoothie.irrvlo.xyz/linked.png";
               linkedBadge.style = badgeStyle;
               badgesElem.appendChild(linkedBadge);
             }
 
             if (customs.booster) {
               const boosterBadge = document.createElement("img");
-              boosterBadge.src = "https://juice.irrvlo.xyz/booster.png";
+              boosterBadge.src = "https://smoothie.irrvlo.xyz/booster.png";
               boosterBadge.style = badgeStyle;
               badgesElem.appendChild(boosterBadge);
             }
@@ -682,8 +682,8 @@ document.addEventListener("DOMContentLoaded", async () => {
             gap: 0.5rem;
           `;
           div.innerHTML = `
-          <img src="https://juice.irrvlo.xyz/bubbles.png" style="height: 0.8rem; width: auto;" />
-          <span style="font-size: 1rem; font-weight: 600; color: #fff;">Juice Client Developer</span>
+          <img src="https://smoothie.irrvlo.xyz/bubbles.png" style="height: 0.8rem; width: auto;" />
+          <span style="font-size: 1rem; font-weight: 600; color: #fff;">Smoothie Client Developer</span>
           `;
           profile.appendChild(div);
         }
@@ -727,12 +727,12 @@ document.addEventListener("DOMContentLoaded", async () => {
       deaths.addEventListener("DOMSubtreeModified", updateKD);
     };
 
-    document.addEventListener("juice-settings-changed", ({ detail }) => {
+    document.addEventListener("smoothie-settings-changed", ({ detail }) => {
       if (detail.setting === "kd_indicator") settings.kd_indicator = detail.value;
       else if (detail.setting === "customizations") settings.customizations = detail.value;
     });
 
-    const customizations = JSON.parse(localStorage.getItem("juice-customizations"));
+    const customizations = JSON.parse(localStorage.getItem("smoothie-customizations"));
 
     const interval = setInterval(() => {
       if (!document.querySelector(".desktop-game-interface")) {
@@ -749,7 +749,7 @@ document.addEventListener("DOMContentLoaded", async () => {
           const shortId = player.querySelector(".short-id")?.innerText.replace("#", "");
 
           if (!shortId) {
-            player.querySelector(".juice-badges")?.remove();
+            player.querySelector(".smoothie-badges")?.remove();
             nickname.style = "";
             playerLeft.style = "";
             return;
@@ -758,13 +758,13 @@ document.addEventListener("DOMContentLoaded", async () => {
           const customs = customizations?.find((c) => c.shortId === shortId);
 
           if (customs) {
-            let badgesElem = player.querySelector(".juice-badges");
+            let badgesElem = player.querySelector(".smoothie-badges");
 
             if (!badgesElem || badgesElem.dataset.shortId !== shortId) {
               badgesElem?.remove();
               badgesElem = document.createElement("div");
               badgesElem.style = "display: flex; gap: 0.25rem; align-items: center; margin-left: 0.25rem;";
-              badgesElem.className = "juice-badges";
+              badgesElem.className = "smoothie-badges";
               badgesElem.dataset.shortId = shortId;
 
               nickname.style = "overflow: unset;";
@@ -798,21 +798,21 @@ document.addEventListener("DOMContentLoaded", async () => {
               }
             };
 
-            if (customs.discord) addBadge("https://juice.irrvlo.xyz/linked.png");
-            if (customs.booster) addBadge("https://juice.irrvlo.xyz/booster.png");
+            if (customs.discord) addBadge("https://smoothie.irrvlo.xyz/linked.png");
+            if (customs.booster) addBadge("https://smoothie.irrvlo.xyz/booster.png");
 
             if (customs.badges?.length) {
               customs.badges.forEach((badge) => addBadge(badge));
             }
           } else {
-            playerLeft.querySelector(".juice-badges")?.remove();
+            playerLeft.querySelector(".smoothie-badges")?.remove();
             nickname.style = "";
             playerLeft.style = "";
           }
         });
       } else {
         tabplayers.forEach((player) => {
-          player.querySelector(".juice-badges")?.remove();
+          player.querySelector(".smoothie-badges")?.remove();
           player.querySelector(".nickname").style = "";
           player.querySelector(".player-left").style = "";
         });
@@ -971,7 +971,7 @@ document.addEventListener("DOMContentLoaded", async () => {
       }
 
       const customizations = JSON.parse(
-        localStorage.getItem("juice-customizations")
+        localStorage.getItem("smoothie-customizations")
       );
 
       if (settings.customizations) {
@@ -1005,7 +1005,7 @@ document.addEventListener("DOMContentLoaded", async () => {
               font-weight: 700 !important;
             `;
 
-            let badgesElem = nickname.querySelector(".juice-badges");
+            let badgesElem = nickname.querySelector(".smoothie-badges");
 
             if (!badgesElem || badgesElem.dataset.shortId !== shortId) {
               if (badgesElem) badgesElem.remove();
@@ -1013,7 +1013,7 @@ document.addEventListener("DOMContentLoaded", async () => {
               badgesElem = document.createElement("div");
               badgesElem.style =
                 "display: flex; gap: 0.25rem; align-items: center; width: 0;";
-              badgesElem.className = "juice-badges";
+              badgesElem.className = "smoothie-badges";
               badgesElem.dataset.shortId = shortId;
               nickname.appendChild(badgesElem);
             } else if (badgesElem.dataset.shortId === shortId) return;
@@ -1022,14 +1022,14 @@ document.addEventListener("DOMContentLoaded", async () => {
 
             if (customs.discord) {
               const linkedBadge = document.createElement("img");
-              linkedBadge.src = "https://juice.irrvlo.xyz/linked.png";
+              linkedBadge.src = "https://smoothie.irrvlo.xyz/linked.png";
               linkedBadge.style.cssText = badgeStyle;
               badgesElem.appendChild(linkedBadge);
             }
 
             if (customs.booster) {
               const boosterBadge = document.createElement("img");
-              boosterBadge.src = "https://juice.irrvlo.xyz/booster.png";
+              boosterBadge.src = "https://smoothie.irrvlo.xyz/booster.png";
               boosterBadge.style.cssText = badgeStyle;
               badgesElem.appendChild(boosterBadge);
             }

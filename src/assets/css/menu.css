@@ -33,7 +33,7 @@
     --opacity-quarter: 0, 0, 0, 0.25;
 }
 
-.menu[data-theme="juice"] {
+.menu[data-theme="smoothie"] {
     --dark: 255, 147, 45;
     --light: 255, 239, 224;
     --orange: 172, 250, 112;
@@ -49,7 +49,7 @@
     --opacity-quarter: 255, 239, 224, 0.8;
 }
 
-.menu[data-theme="inverted-juice"] {
+.menu[data-theme="inverted-smoothie"] {
     --dark: 83, 5, 143;
     --light: 226, 189, 255;
     --orange: 0, 108, 210;
@@ -65,7 +65,7 @@
     --opacity-quarter: 226, 189, 255, 0.8;
 }
 
-.menu[data-theme="inverted-juice"] .about-top.header>img {
+.menu[data-theme="inverted-smoothie"] .about-top.header>img {
     filter: invert(1);
 }
 
@@ -339,18 +339,18 @@
     align-items: center;
 }
 
-.menu .juice.options {
+.menu .smoothie.options {
     display: none;
     gap: 1rem;
     flex-direction: column;
     height: 100%;
 }
 
-.menu .juice.options.active {
+.menu .smoothie.options.active {
     display: flex;
 }
 
-.menu .juice.tab {
+.menu .smoothie.tab {
     width: 100%;
     box-sizing: border-box;
     height: 3rem;
@@ -365,11 +365,11 @@
     border-radius: 0.5rem;
 }
 
-.menu .juice.tab:hover {
+.menu .smoothie.tab:hover {
     background: rgba(var(--hover-light));
 }
 
-.menu .juice.tab.active {
+.menu .smoothie.tab.active {
     background: rgba(var(--dark), 0.1);
     color: rgba(var(--light));
     border: 0.1rem solid rgba(var(--border));
@@ -717,11 +717,11 @@
     background: rgb(41 9 0);
 }
 
-.about-juice {
+.about-smoothie {
     background: rgba(var(--orange));
 }
 
-.about-juice:hover {
+.about-smoothie:hover {
     background: rgba(var(--orange), 0.9);
 }
 
@@ -752,7 +752,7 @@
     font-size: 1rem;
 }
 
-.juice-button {
+.smoothie-button {
     width: 100%;
     height: 2.5rem;
     display: flex;
@@ -769,11 +769,11 @@
     outline: none;
 }
 
-.juice-button.large {
+.smoothie-button.large {
     height: 3rem;
 }
 
-.juice-button:hover {
+.smoothie-button:hover {
     background: rgba(var(--hover-light));
 }
 

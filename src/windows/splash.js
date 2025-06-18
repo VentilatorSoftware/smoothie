@@ -8,7 +8,7 @@ autoUpdater.autoDownload = true;
 autoUpdater.setFeedURL({
   provider: "github",
   owner: "irrvlo",
-  repo: "juice-client",
+  repo: "smoothie-client",
 });
 
 let splashWindow;

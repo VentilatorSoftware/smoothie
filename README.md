@@ -1,11 +1,10 @@
-# Juice Client
+# Smoothie Client
 
-A light Electron client for Kirka.io. Join our [discord](https://discord.gg/FjzAAdSjng) for support and update notifications.
+A light Electron client for Kirka.io. Mostly https://github.com/irrvlo/juice-client reverted to before when xip asked for something that was incompatible with project ethics.
 
 # Download
 
-- [Website](https://juice.irrvlo.xyz)
-- [Releases](https://github.com/irrvlo/juice-client/releases)
+- [Releases](https://github.com/VentilatorSoftware/smoothie/releases)
 
 Windows, Linux and MacOS releases are available.
 # What features does this have?
@@ -51,12 +50,12 @@ Windows, Linux and MacOS releases are available.
 | F11 | Fullscreen |
 | F12 & Ctrl + Shift + I | Open DevTools |
 
-## Known bugs:
-- Pulp manifests under rare conditions. 
 
 # Is it safe?
 
-Juice Client is 100% completely safe to use. Releases are built directly with the source code using Github Workflows (Thanks Error!). If you face any issues, join our [discord](https://discord.gg/FjzAAdSjng) to report bugs.
+Smoothie Client is of undetermined safety. xip likely won't like it.
+
+Releases are built directly with the source code using Github Workflows (Thanks Error!). If you face any issues, please create a GitHub issue to report them.
 
 ## Credits
 
@@ -65,3 +64,4 @@ Juice Client is 100% completely safe to use. Releases are built directly with th
 - AwesomeSam for a basic Resource Swapper
 - Error430 for optimizations
 - robertpakalns for various bug fixes, optimizations, and tweaks
+- (currently very minimally) VentilatorSoftware for undoing latest commits and republishing

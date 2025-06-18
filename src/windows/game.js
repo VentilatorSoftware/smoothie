@@ -41,7 +41,7 @@ ipcMain.on("update-setting", (e, key, value) => {
 ipcMain.on("open-swapper-folder", () => {
   const swapperPath = path.join(
     app.getPath("documents"),
-    "JuiceClient/swapper/assets"
+    "SmoothieClient/swapper/assets"
   );
 
   if (!fs.existsSync(swapperPath)) {
@@ -55,7 +55,7 @@ ipcMain.on("open-swapper-folder", () => {
 ipcMain.on("open-scripts-folder", () => {
   const scriptsPath = path.join(
     app.getPath("documents"),
-    "JuiceClient/scripts"
+    "SmoothieClient/scripts"
   );
 
   if (!fs.existsSync(scriptsPath)) {
@@ -66,7 +66,7 @@ ipcMain.on("open-scripts-folder", () => {
   }
 });
 
-ipcMain.on("reset-juice-settings", () => {
+ipcMain.on("reset-smoothie-settings", () => {
   store.set("settings", default_settings);
   app.relaunch();
   app.quit();
@@ -80,7 +80,7 @@ const createWindow = () => {
   gameWindow = new BrowserWindow({
     fullscreen: settings.auto_fullscreen,
     icon: path.join(__dirname, "../assets/img/icon.png"),
-    title: "Juice Client",
+    title: "Smoothie Client",
     width: 1280,
     height: 720,
     show: false,
@@ -95,7 +95,7 @@ const createWindow = () => {
 
   const scriptsPath = path.join(
     app.getPath("documents"),
-    "JuiceClient",
+    "SmoothieClient",
     "scripts"
   );
   if (!fs.existsSync(scriptsPath)) {
@@ -153,7 +153,7 @@ const createWindow = () => {
 
   gameWindow.loadURL(settings.base_url);
   gameWindow.webContents.setUserAgent(
-    `Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.7103.116 Safari/537.36 Electron/10.4.7 JuiceClient/${app.getVersion()}`
+    `Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.7103.116 Safari/537.36 Electron/10.4.7 SmoothieClient/${app.getVersion()}`
   );
   gameWindow.removeMenu();
   gameWindow.maximize();

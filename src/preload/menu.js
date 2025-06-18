@@ -30,7 +30,7 @@ class Menu {
   createMenu() {
     const menu = document.createElement("div");
     menu.innerHTML = this.menuHTML;
-    menu.id = "juice-menu";
+    menu.id = "smoothie-menu";
     menu.style.cssText =
       "z-index: 99999999; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%);";
 	const menuCSS = document.createElement("style");
@@ -54,13 +54,13 @@ class Menu {
     this.handleDropdowns();
     this.handleSearch();
     this.handleButtons();
-    this.localStorage.getItem("juice-menu-tab")
+    this.localStorage.getItem("smoothie-menu-tab")
       ? this.handleTabChange(
           this.menu.querySelector(
-            `[data-tab="${this.localStorage.getItem("juice-menu-tab")}"]`
+            `[data-tab="${this.localStorage.getItem("smoothie-menu-tab")}"]`
           )
         )
-      : this.handleTabChange(this.menu.querySelector(".juice.tab"));
+      : this.handleTabChange(this.menu.querySelector(".smoothie.tab"));
   }
 
   setVersion() {
@@ -80,15 +80,15 @@ class Menu {
     this.menu.querySelector(
       ".keybind"
     ).innerText = `Press ${this.settings.menu_keybind} to toggle menu`;
-    if (!this.localStorage.getItem("juice-menu")) {
+    if (!this.localStorage.getItem("smoothie-menu")) {
       this.localStorage.setItem(
-        "juice-menu",
+        "smoothie-menu",
         this.menuToggle.getAttribute("data-active")
       );
     } else {
       this.menuToggle.setAttribute(
         "data-active",
-        this.localStorage.getItem("juice-menu")
+        this.localStorage.getItem("smoothie-menu")
       );
     }
   }
@@ -107,7 +107,7 @@ class Menu {
           document.exitPointerLock();
         }
         this.menuToggle.setAttribute("data-active", !isActive);
-        this.localStorage.setItem("juice-menu", !isActive);
+        this.localStorage.setItem("smoothie-menu", !isActive);
       }
     });
   }
@@ -150,7 +150,7 @@ class Menu {
         changeKeybindButton.innerText = e.code;
         ipcRenderer.send("update-setting", "menu_keybind", e.code);
 
-        const event = new CustomEvent("juice-settings-changed", {
+        const event = new CustomEvent("smoothie-settings-changed", {
           detail: { setting: "menu_keybind", value: e.code },
         });
         document.dispatchEvent(event);
@@ -170,7 +170,7 @@ class Menu {
     const value = type === "checkbox" ? input.checked : input.value;
     this.settings[setting] = value;
     ipcRenderer.send("update-setting", setting, value);
-    const event = new CustomEvent("juice-settings-changed", {
+    const event = new CustomEvent("smoothie-settings-changed", {
       detail: { setting: setting, value: value },
     });
     document.dispatchEvent(event);
@@ -195,7 +195,7 @@ class Menu {
     const value = select.value;
     this.settings[setting] = value;
     ipcRenderer.send("update-setting", setting, value);
-    const event = new CustomEvent("juice-settings-changed", {
+    const event = new CustomEvent("smoothie-settings-changed", {
       detail: { setting: setting, value: value },
     });
     if (setting === "menu_theme") {
@@ -214,19 +214,19 @@ class Menu {
   }
 
   handleTabChanges() {
-    const tabs = this.menu.querySelectorAll(".juice.tab");
+    const tabs = this.menu.querySelectorAll(".smoothie.tab");
     tabs.forEach((tab) => {
       tab.addEventListener("click", () => this.handleTabChange(tab));
     });
   }
 
   handleTabChange(tab) {
-    const tabs = this.menu.querySelectorAll(".juice.tab");
+    const tabs = this.menu.querySelectorAll(".smoothie.tab");
     const tabName = tab.dataset.tab;
 
-    this.localStorage.setItem("juice-menu-tab", tabName);
+    this.localStorage.setItem("smoothie-menu-tab", tabName);
 
-    const contents = this.menu.querySelectorAll(".juice.options");
+    const contents = this.menu.querySelectorAll(".smoothie.options");
     tabs.forEach((tab) => {
       tab.classList.remove("active");
     });
@@ -248,7 +248,7 @@ class Menu {
   }
 
   handleSearch() {
-    const searchInput = this.menu.querySelector(".juice.search");
+    const searchInput = this.menu.querySelector(".smoothie.search");
     const settings = this.menu.querySelectorAll(".option:not(.custom)");
     searchInput.addEventListener("input", () => {
       const searchValue = searchInput.value.toLowerCase();
@@ -298,7 +298,7 @@ class Menu {
 
       const confirm = document.createElement("button");
       confirm.innerText = "Confirm";
-      confirm.classList.add("juice-button");
+      confirm.classList.add("smoothie-button");
       confirm.addEventListener("click", () => {
         try {
           if (!input.value) return;
@@ -308,7 +308,7 @@ class Menu {
             this.settings[key] = settings[key];
             ipcRenderer.send("update-setting", key, settings[key]);
 
-            const event = new CustomEvent("juice-settings-changed", {
+            const event = new CustomEvent("smoothie-settings-changed", {
               detail: { setting: key, value: settings[key] },
             });
             document.dispatchEvent(event);
@@ -341,7 +341,7 @@ class Menu {
 
       const copy = document.createElement("button");
       copy.innerText = "Copy";
-      copy.classList.add("juice-button");
+      copy.classList.add("smoothie-button");
       copy.addEventListener("click", () => {
         navigator.clipboard.writeText(textarea.value);
       });
@@ -352,19 +352,19 @@ class Menu {
     });
 
     let clickCounter = 0;
-    const resetJuiceSettings = this.menu.querySelector("#reset-juice-settings");
-    resetJuiceSettings.addEventListener("click", () => {
+    const resetSmoothieSettings = this.menu.querySelector("#reset-smoothie-settings");
+    resetSmoothieSettings.addEventListener("click", () => {
       clickCounter++;
       if (clickCounter === 1) {
-        resetJuiceSettings.style.background = "rgba(var(--red), 0.25)";
-        const text = resetJuiceSettings.querySelector(".text");
+        resetSmoothieSettings.style.background = "rgba(var(--red), 0.25)";
+        const text = resetSmoothieSettings.querySelector(".text");
         text.innerText = "Are you sure?";
 
-        const description = resetJuiceSettings.querySelector(".description");
+        const description = resetSmoothieSettings.querySelector(".description");
         description.innerText =
           "This will restart the client and reset all settings. Click again to confirm";
       } else if (clickCounter === 2) {
-        ipcRenderer.send("reset-juice-settings");
+        ipcRenderer.send("reset-smoothie-settings");
       }
     });
 
@@ -384,7 +384,7 @@ class Menu {
         "SETTINGS___SETTING/SKYBOX___SETTING/TEXTURE_IMG6___SETTING",
       ];
 
-      const juiceKeys = ["css_link", "hitmarker_link", "killicon_link"];
+      const smoothieKeys = ["css_link", "hitmarker_link", "killicon_link"];
 
       const encodeImage = async (url) => {
         if (!url || url === "") return "";
@@ -410,13 +410,13 @@ class Menu {
         localStorage.setItem(key, data);
       }
 
-      for (const key of juiceKeys) {
+      for (const key of smoothieKeys) {
         const url = this.settings[key];
         const data = await encodeImage(url);
         this.settings[key] = data;
         ipcRenderer.send("update-setting", key, data);
 
-        const event = new CustomEvent("juice-settings-changed", {
+        const event = new CustomEvent("smoothie-settings-changed", {
           detail: { setting: key, value: this.settings[key] },
         });
         document.dispatchEvent(event);
